@@ -1,6 +1,5 @@
 
 import React from 'react';
-import '../types.ts';
 
 const About: React.FC = () => {
   return (

@@ -1,12 +1,11 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { getRiskInsights } from '../services/geminiService';
-import { ChatMessage } from '../types';
 
 const AIAssistant: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState('');
-  const [messages, setMessages] = useState<ChatMessage[]>([
+  const [messages, setMessages] = useState<any[]>([
     { role: 'model', text: 'Protocol initialized. I am your AI Risk Analyst. Please specify the engineering scenario or coastal vulnerability you wish to analyze.' }
   ]);
   const [isTyping, setIsTyping] = useState(false);
@@ -25,13 +24,13 @@ const AIAssistant: React.FC = () => {
   const handleSend = async () => {
     if (!input.trim()) return;
 
-    const userMessage: ChatMessage = { role: 'user', text: input };
+    const userMessage = { role: 'user', text: input };
     setMessages(prev => [...prev, userMessage]);
     setInput('');
     setIsTyping(true);
 
     const responseText = await getRiskInsights(input);
-    const aiMessage: ChatMessage = { role: 'model', text: responseText || 'Analysis complete.' };
+    const aiMessage = { role: 'model', text: responseText || 'Analysis complete.' };
     
     setMessages(prev => [...prev, aiMessage]);
     setIsTyping(false);

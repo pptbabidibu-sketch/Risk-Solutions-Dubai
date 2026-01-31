@@ -1,6 +1,5 @@
 
 import React from 'react';
-import '../types';
 
 const Contact: React.FC = () => {
   return (

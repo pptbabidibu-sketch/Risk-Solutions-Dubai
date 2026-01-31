@@ -1,6 +1,5 @@
 
 import React from 'react';
-import '../types.ts';
 
 const CapabilityCard = ({ icon, title, description, index }: { icon: string; title: string; description: string; index: number }) => (
   <div className={`reveal-element group relative p-8 transition-all duration-500 border-l border-black/5 hover:border-black/20`} style={{ transitionDelay: `${index * 50}ms` }}>

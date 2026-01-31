@@ -1,6 +1,5 @@
 
 import React from 'react';
-import '../types';
 
 const Footer: React.FC = () => {
   return (

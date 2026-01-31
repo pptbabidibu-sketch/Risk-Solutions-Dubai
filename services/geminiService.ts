@@ -1,12 +1,20 @@
 
 import { GoogleGenAI } from "@google/genai";
 
-// Initialize Gemini API
-// API Key is assumed to be provided via process.env.API_KEY in the execution environment
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+// Safe check for process.env in browser to avoid ReferenceError
+const getApiKey = () => {
+  try {
+    return (typeof process !== 'undefined' && process?.env?.API_KEY) || '';
+  } catch {
+    return '';
+  }
+};
+
+const ai = new GoogleGenAI({ apiKey: getApiKey() });
 
 export const getRiskInsights = async (userInput: string) => {
-  if (!process.env.API_KEY) {
+  const apiKey = getApiKey();
+  if (!apiKey) {
     return "API Key configuration missing. Please ensure environment variables are set.";
   }
 

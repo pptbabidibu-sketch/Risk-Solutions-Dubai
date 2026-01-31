@@ -1,6 +1,5 @@
 
 import React from 'react';
-import '../types.ts';
 
 const Hero: React.FC = () => {
   return (

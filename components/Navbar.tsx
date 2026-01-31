@@ -1,6 +1,5 @@
 
 import React, { useState, useEffect } from 'react';
-import '../types.ts';
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
