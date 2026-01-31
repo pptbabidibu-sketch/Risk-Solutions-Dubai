@@ -2,7 +2,6 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App';
-// Import types to ensure global JSX augmentation for custom elements like iconify-icon is available
 import './types';
 
 const rootElement = document.getElementById('root');
