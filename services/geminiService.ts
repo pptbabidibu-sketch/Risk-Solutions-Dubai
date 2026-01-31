@@ -2,9 +2,14 @@
 import { GoogleGenAI } from "@google/genai";
 
 // Initialize Gemini API
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// API Key is assumed to be provided via process.env.API_KEY in the execution environment
+const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
 
 export const getRiskInsights = async (userInput: string) => {
+  if (!process.env.API_KEY) {
+    return "API Key configuration missing. Please ensure environment variables are set.";
+  }
+
   try {
     const response = await ai.models.generateContent({
       model: 'gemini-3-pro-preview',
@@ -21,10 +26,9 @@ export const getRiskInsights = async (userInput: string) => {
       },
     });
 
-    // Access the text property directly as per latest SDK rules
     return response.text || "No analysis available.";
   } catch (error) {
     console.error("Gemini API Error:", error);
-    return "Protocol error. Stochastic analysis unavailable. Please contact the DIFC headquarters.";
+    return "Protocol error. Stochastic analysis unavailable. Please contact the DIFC headquarters for manual verification.";
   }
 };

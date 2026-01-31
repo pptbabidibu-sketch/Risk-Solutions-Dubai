@@ -5,13 +5,14 @@ import App from './App';
 import './types';
 
 const rootElement = document.getElementById('root');
-if (!rootElement) {
-  throw new Error("Target container 'root' not found");
-}
 
-const root = createRoot(rootElement);
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+if (!rootElement) {
+  console.error("Critical Error: Target container 'root' not found in document.");
+} else {
+  const root = createRoot(rootElement);
+  root.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  );
+}
