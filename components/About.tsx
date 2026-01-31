@@ -1,11 +1,10 @@
 
 import React from 'react';
-import '../types';
+import '../types.ts';
 
 const About: React.FC = () => {
   return (
     <section id="about" className="py-32 px-6 bg-[#F5F5F0] relative overflow-hidden">
-      {/* Subtle background shadow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-black/5 blur-[120px] rounded-full pointer-events-none"></div>
 
       <div className="max-w-4xl mx-auto relative z-10">

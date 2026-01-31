@@ -1,17 +1,16 @@
 
 import React, { useEffect } from 'react';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import About from './components/About';
-import Services from './components/Services';
-import Research from './components/Research';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
-import AIAssistant from './components/AIAssistant';
+import Navbar from './components/Navbar.tsx';
+import Hero from './components/Hero.tsx';
+import About from './components/About.tsx';
+import Services from './components/Services.tsx';
+import Research from './components/Research.tsx';
+import Contact from './components/Contact.tsx';
+import Footer from './components/Footer.tsx';
+import AIAssistant from './components/AIAssistant.tsx';
 
 const App: React.FC = () => {
   useEffect(() => {
-    // Reveal animation logic
     const observerOptions = {
       threshold: 0.1,
       rootMargin: "0px 0px -50px 0px"
