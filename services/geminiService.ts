@@ -1,42 +1,33 @@
 
 import { GoogleGenAI } from "@google/genai";
 
-// Safe check for process.env in browser to avoid ReferenceError
-const getApiKey = () => {
-  try {
-    return (typeof process !== 'undefined' && process?.env?.API_KEY) || '';
-  } catch {
-    return '';
-  }
-};
-
-const ai = new GoogleGenAI({ apiKey: getApiKey() });
+// Initialize Gemini API using the API key from environment variables directly as per guidelines
+const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 export const getRiskInsights = async (userInput: string) => {
-  const apiKey = getApiKey();
-  if (!apiKey) {
-    return "API Key configuration missing. Please ensure environment variables are set.";
-  }
-
   try {
     const response = await ai.models.generateContent({
+      // Using gemini-3-pro-preview for advanced engineering reasoning and STEM tasks
       model: 'gemini-3-pro-preview',
       contents: userInput,
       config: {
         systemInstruction: `You are the Lead Engineering Consultant AI for 'Risk Solutions Dubai', founded by Dr. Seoungwoo Kim (PhD, Civil & Environmental Engineering).
         Your persona is highly technical, authoritative, and scientifically rigorous. 
-        Focus on:
+        You specialize in:
         1. Reliability-Based Design (ISO 2394).
         2. Probabilistic Modeling & Stochastic Analysis.
         3. Climate Resilience & Impact Quantification.
-        Respond with professional engineering precision. Mention the philosophy of Dr. Kim when relevant.`,
+        4. Heavy Industry / Offshore Asset Lifecycle optimization.
+        You move beyond deterministic engineering toward risk-informed decision making.
+        When users ask questions, provide structured, precise, and professional insights. Mention the philosophy of Dr. Kim when relevant.
+        Focus on infrastructure safety, financial efficiency, and climate adaptation.`,
         temperature: 0.4,
       },
     });
-
-    return response.text || "No analysis available.";
+    // Directly access the text property as per the latest @google/genai SDK guidelines
+    return response.text;
   } catch (error) {
     console.error("Gemini API Error:", error);
-    return "Protocol error. Stochastic analysis unavailable. Please contact the DIFC headquarters for manual verification.";
+    return "Protocol error. Unable to perform stochastic analysis at this moment. Please direct your query to our technical headquarters in Dubai.";
   }
 };

@@ -1,9 +1,11 @@
 
 import React from 'react';
+import '../types';
 
 const Hero: React.FC = () => {
   return (
     <header className="relative w-full h-screen min-h-[800px] flex items-center justify-center overflow-hidden bg-[#F5F5F0]">
+      {/* Background Layers */}
       <div className="absolute inset-0 z-0">
         <img 
           src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop" 
@@ -14,6 +16,7 @@ const Hero: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#F5F5F0]/50 to-[#F5F5F0]"></div>
       </div>
 
+      {/* Subtle Background Ambience */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-black/5 rounded-full blur-[120px] animate-pulse"></div>
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-black/5 rounded-full blur-[120px] animate-pulse delay-700"></div>
 

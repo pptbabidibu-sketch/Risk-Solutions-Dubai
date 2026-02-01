@@ -7,10 +7,10 @@ import Services from './components/Services';
 import Research from './components/Research';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import AIAssistant from './components/AIAssistant';
 
 const App: React.FC = () => {
   useEffect(() => {
+    // Simple reveal animation trigger on mount/scroll
     const observerOptions = {
       threshold: 0.1,
       rootMargin: "0px 0px -50px 0px"
@@ -24,6 +24,7 @@ const App: React.FC = () => {
       });
     }, observerOptions);
 
+    // Apply reveal to sections or marked elements
     document.querySelectorAll('section, .reveal-element').forEach(el => {
       el.classList.add('reveal-element');
       observer.observe(el);
@@ -33,7 +34,7 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <div className="relative min-h-screen selection:bg-black selection:text-white">
+    <div className="relative min-h-screen">
       <Navbar />
       <Hero />
       <About />
@@ -41,7 +42,6 @@ const App: React.FC = () => {
       <Research />
       <Contact />
       <Footer />
-      <AIAssistant />
     </div>
   );
 };
